@@ -43,6 +43,7 @@ public class App
 
 				switch (option) {
 				case 1:
+					
 					System.out.print("Enter the name:: ");
 					name = br.readLine();
 
@@ -82,13 +83,62 @@ public class App
 					List<StudentDTO> students = service.getAllStudents();
 					students.forEach(System.out::println);	
 					
-				case 4:
+					break;
 					
+				case 4:
+					//update logic::
+					System.out.print("Enter the ID:: ");
+					id = br.readLine();
+					
+					System.out.print("Enter the name:: ");
+					name = br.readLine();
+
+					System.out.print("Enter the age:: ");
+					age = br.readLine();
+
+					System.out.print("Enter the address:: ");
+					address = br.readLine();
+
+					dto = new StudentDTO();
+					dto.setSid(Integer.parseInt(id));
+					dto.setSname(name);
+					dto.setSage(Integer.parseInt(age));
+					dto.setSaddress(address);
+					
+					service.update(dto);
+					
+					break;
 
 				case 5:
-				
+					//delete on basis of id::
+					System.out.print("Enter the Student ID to be Deleted:: ");
+					id = br.readLine();
+					service.delete(Integer.parseInt(id));
+					
+					break;
 
 				case 6:
+					//delete on basis of bean::
+					
+					System.out.print("Enter the ID:: ");
+					id = br.readLine();
+					
+					System.out.print("Enter the name:: ");
+					name = br.readLine();
+
+					System.out.print("Enter the age:: ");
+					age = br.readLine();
+
+					System.out.print("Enter the address:: ");
+					address = br.readLine();
+
+					dto = new StudentDTO();
+					dto.setSid(Integer.parseInt(id));
+					dto.setSname(name);
+					dto.setSage(Integer.parseInt(age));
+					dto.setSaddress(address);
+					
+					service.delete(dto);
 					
 					break;
 

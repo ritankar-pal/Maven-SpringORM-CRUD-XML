@@ -31,20 +31,21 @@ public class StudentServiceImpl implements IStudentService {
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-
+		dao.delete(id);
 	}
 
 	@Override
-	public void delete(StudentDTO s) {
-		// TODO Auto-generated method stub
-
+	public void delete(StudentDTO dto) {
+		StudentBO studentBO = new StudentBO();
+		BeanUtils.copyProperties(dto, studentBO);
+		dao.delete(studentBO);
 	}
 
 	@Override
-	public void update(StudentDTO s) {
-		// TODO Auto-generated method stub
-
+	public void update(StudentDTO dto) {
+		StudentBO studentBO = new StudentBO();
+		BeanUtils.copyProperties(dto, studentBO);
+		dao.update(studentBO);
 	}
 
 	@Override

@@ -26,20 +26,44 @@ public class StudentDaoImpl implements IStudentDao {
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-
+		StudentBO studentBO = hibernateTemplate.get(StudentBO.class, id);
+		if(studentBO != null) {
+			hibernateTemplate.delete(studentBO);
+			System.out.println("Record Deleted Successfully:: " + id);
+		}
+		else {
+			System.out.println("Record Not Available for the id:: " + id);
+		}
 	}
 
 	@Override
-	public void delete(StudentBO s) {
-		// TODO Auto-generated method stub
-
+	public void delete(StudentBO bo) {
+		
+		StudentBO studentBO = hibernateTemplate.get(StudentBO.class, bo.getSid());
+		
+		if(studentBO != null) {
+			hibernateTemplate.delete(studentBO);
+			System.out.println("Record Successfully Deleted for the ID:: " + bo.getSid());
+		}
+		else {
+			System.out.println("Record not available for the id:: " + bo.getSid());
+		}
+		
 	}
 
 	@Override
-	public void update(StudentBO s) {
-		// TODO Auto-generated method stub
-
+	public void update(StudentBO bo) {
+		
+		StudentBO studentBO = hibernateTemplate.get(StudentBO.class, bo.getSid());
+		
+		if(studentBO != null) {
+			hibernateTemplate.merge(bo);
+			System.out.println("Record Successfully Updated for the id:: " + bo.getSid());
+		}
+		else {
+			System.out.println("Record Updation failed for the id:: " + bo.getSid());
+		}
+	
 	}
 
 	@Override
